@@ -2,22 +2,22 @@
 
 **Projeto de portfólio | Python | SHA-256 | Inventário de arquivos | Relatórios CSV**
 
-Projeto educacional desenvolvido para demonstrar um fluxo básico de inventário de arquivos e verificação de integridade por meio de hashes SHA-256. A ferramenta percorre uma pasta de amostras, coleta informações dos arquivos e exporta os resultados para um relatório CSV.
+Projeto educacional que demonstra um fluxo básico de inventário de arquivos e verificação de integridade por meio de hashes SHA-256. A ferramenta percorre uma pasta de amostras, coleta informações dos arquivos e exporta os resultados para um relatório CSV.
 
 ## Objetivos
 
 - Inventariar arquivos de uma pasta, incluindo subpastas.
-- Registrar nome, caminho relativo, extensão e tamanho dos arquivos.
+- Registrar o nome, o caminho relativo, a extensão e o tamanho dos arquivos.
 - Registrar a data de modificação informada pelo sistema de arquivos.
 - Calcular o hash SHA-256 de cada arquivo acessível.
 - Exportar os resultados para um relatório CSV.
 - Registrar erros de leitura encontrados durante o processamento.
 
-## Tecnologias utilizadas
+## Requisitos
 
-- Python 3.10 ou superior
-- Biblioteca padrão do Python: `argparse`, `csv`, `hashlib`, `datetime`, `pathlib`
-- Testes automatizados com `unittest`
+- Python 3.10 ou superior.
+- Bibliotecas da biblioteca padrão do Python: `argparse`, `csv`, `hashlib`, `datetime` e `pathlib`.
+- Testes automatizados com `unittest`.
 
 Não são necessárias bibliotecas externas.
 
@@ -33,7 +33,7 @@ laboratorio-forense-digital/
 └── .gitignore
 ```
 
-A pasta `relatorios/` é criada automaticamente quando o programa gera o CSV.
+A pasta `relatorios/` é criada automaticamente quando o programa gera o arquivo CSV.
 
 ## Como executar
 
@@ -49,7 +49,7 @@ No Windows, se o comando `python` não funcionar, tente:
 py main.py --source amostras --output relatorios/inventario.csv
 ```
 
-O programa exibirá a quantidade de arquivos encontrados, os processados com sucesso, eventuais erros e o caminho do relatório gerado.
+O programa exibirá a quantidade de arquivos encontrados, os processados com sucesso, os eventuais erros e o caminho do relatório gerado.
 
 ## Como executar os testes
 
@@ -73,13 +73,13 @@ Os testes verificam o cálculo do SHA-256, a inclusão de arquivos em subpastas 
 - A data de modificação é obtida dos metadados disponibilizados pelo sistema de arquivos e não deve ser considerada prova independente da data de um evento.
 - A ferramenta não impede alterações nos arquivos de origem.
 - Este projeto é educacional e não substitui ferramentas ou procedimentos forenses validados.
-- Para atividades reais, trabalhe com autorização, preserve os originais e documente os procedimentos de coleta e análise.
+- Para atividades reais, trabalhe com autorização, preserve os arquivos originais e documente os procedimentos de coleta e análise.
 
 ## Próximas melhorias
 
 1. Adicionar testes para arquivos vazios e erros de leitura.
 2. Implementar exportação adicional para JSON.
-3. Integrar extração de metadados com ExifTool.
+3. Integrar a extração de metadados com o ExifTool.
 4. Melhorar os registros de erros e a documentação dos resultados.
 
 ## Contexto profissional
