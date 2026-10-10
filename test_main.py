@@ -21,7 +21,10 @@ class ForensicInventoryTests(unittest.TestCase):
             (source / "nested" / "sample.txt").write_text("test", encoding="utf-8")
             records = inventory(source)
             self.assertEqual(len(records), 1)
-            self.assertEqual(records[0]["caminho_relativo"], "nested/sample.txt")
+          self.assertEqual(
+    Path(records[0]["caminho_relativo"]).as_posix(),
+    "nested/sample.txt",
+)
             self.assertEqual(records[0]["status"], "OK")
 
     def test_csv_is_created(self):
