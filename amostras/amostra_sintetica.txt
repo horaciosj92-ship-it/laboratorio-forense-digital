@@ -1,0 +1,1 @@
+Arquivo sintético para teste de inventário e cálculo SHA-256.
