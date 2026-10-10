@@ -1,7 +1,6 @@
 # Laboratório de Análise Forense Digital
 
 **Projeto de portfólio | Python | SHA-256 | Inventário de arquivos | Relatórios CSV**
-
 Projeto educacional que demonstra um fluxo básico de inventário de arquivos e verificação de integridade por meio de hashes SHA-256. A ferramenta percorre uma pasta de amostras, coleta informações dos arquivos e exporta os resultados para um relatório CSV.
 
 ## Objetivos
