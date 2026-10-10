@@ -1,65 +1,87 @@
 # Laboratório de Análise Forense Digital
 
-**Projeto educacional de portfólio | Python | SHA-256 | Inventário de arquivos | CSV**
+**Projeto de portfólio | Python | SHA-256 | Inventário de arquivos | Relatórios CSV**
 
-Este projeto demonstra um fluxo inicial e reproduzível para inventariar arquivos de uma pasta de amostras e registrar hashes SHA-256. Foi desenvolvido para fins educacionais, usando arquivos de teste autorizados.
+Projeto educacional desenvolvido para demonstrar um fluxo básico de inventário de arquivos e verificação de integridade por meio de hashes SHA-256. A ferramenta percorre uma pasta de amostras, coleta informações dos arquivos e exporta os resultados para um relatório CSV.
 
 ## Objetivos
 
-- Enumerar arquivos dentro de uma pasta de amostras.
-- Registrar nome, caminho relativo, extensão, tamanho e datas disponíveis.
-- Calcular SHA-256 para apoiar verificações futuras de integridade.
-- Exportar um relatório CSV.
-- Documentar limitações e preservar os arquivos originais.
+- Inventariar arquivos de uma pasta, incluindo subpastas.
+- Registrar nome, caminho relativo, extensão e tamanho dos arquivos.
+- Registrar a data de modificação informada pelo sistema de arquivos.
+- Calcular o hash SHA-256 de cada arquivo acessível.
+- Exportar os resultados para um relatório CSV.
+- Registrar erros de leitura encontrados durante o processamento.
 
-## Requisitos
+## Tecnologias utilizadas
 
 - Python 3.10 ou superior
-- Nenhuma biblioteca externa necessária
+- Biblioteca padrão do Python: `argparse`, `csv`, `hashlib`, `datetime`, `pathlib`
+- Testes automatizados com `unittest`
+
+Não são necessárias bibliotecas externas.
+
+## Estrutura do projeto
+
+```text
+laboratorio-forense-digital/
+├── amostras/
+│   └── amostra_sintetica.txt
+├── main.py
+├── test_main.py
+├── README.md
+└── .gitignore
+```
+
+A pasta `relatorios/` é criada automaticamente quando o programa gera o CSV.
 
 ## Como executar
 
-Na pasta do projeto, execute:
+Abra o terminal na pasta do projeto e execute:
 
 ```bash
 python main.py --source amostras --output relatorios/inventario.csv
 ```
 
-No Windows, se `python` não funcionar, tente:
+No Windows, se o comando `python` não funcionar, tente:
 
-```powershell
+```bash
 py main.py --source amostras --output relatorios/inventario.csv
 ```
 
-O programa cria o relatório CSV no caminho informado. Coloque somente arquivos de teste próprios ou autorizados dentro de `amostras/`.
+O programa exibirá a quantidade de arquivos encontrados, os processados com sucesso, eventuais erros e o caminho do relatório gerado.
 
-## Estrutura
+## Como executar os testes
 
-```text
-laboratorio-forense-digital/
-├── amostras/             # Arquivos de teste autorizados
-├── relatorios/           # Relatórios gerados
-├── tests/
-│   └── test_main.py      # Testes automatizados
-├── main.py               # Ferramenta de inventário e hash
-├── README.md
-└── .gitignore
+Na pasta do projeto, execute:
+
+```bash
+python -m unittest -v test_main
 ```
 
-## Limitações e cautelas
+No Windows, se necessário:
 
-- O hash SHA-256 ajuda a comparar o conteúdo de um arquivo em momentos diferentes; sozinho, não prova autenticidade, autoria ou cadeia de custódia.
-- As datas dependem do sistema de arquivos e podem mudar quando arquivos são copiados. Não são, isoladamente, prova de quando um evento ocorreu.
-- Esta versão não bloqueia alterações nos arquivos de origem. Para uma investigação real, trabalhe em cópias verificadas e siga procedimentos institucionais de preservação e cadeia de custódia.
-- Não use arquivos pessoais, corporativos ou de terceiros sem autorização.
+```bash
+py -m unittest -v test_main
+```
+
+Os testes verificam o cálculo do SHA-256, a inclusão de arquivos em subpastas e a criação do relatório CSV.
+
+## Limitações e cuidados forenses
+
+- O SHA-256 permite comparar o conteúdo de arquivos em momentos diferentes. Isoladamente, não comprova autoria, origem, data de criação ou cadeia de custódia.
+- A data de modificação é obtida dos metadados disponibilizados pelo sistema de arquivos e não deve ser considerada prova independente da data de um evento.
+- A ferramenta não impede alterações nos arquivos de origem.
+- Este projeto é educacional e não substitui ferramentas ou procedimentos forenses validados.
+- Para atividades reais, trabalhe com autorização, preserve os originais e documente os procedimentos de coleta e análise.
 
 ## Próximas melhorias
 
-1. Extrair metadados com ExifTool em uma etapa separada.
-2. Adicionar logs e tratamento de erros mais detalhado.
-3. Criar testes para arquivos vazios, subpastas e erros de leitura.
-4. Gerar também um relatório JSON.
+1. Adicionar testes para arquivos vazios e erros de leitura.
+2. Implementar exportação adicional para JSON.
+3. Integrar extração de metadados com ExifTool.
+4. Melhorar os registros de erros e a documentação dos resultados.
 
 ## Contexto profissional
 
-Projeto demonstrativo para estudo de Python, integridade de arquivos e documentação técnica aplicada à Informática Forense e Cibersegurança.
+Projeto demonstrativo de estudos em Python, integridade de arquivos e documentação técnica aplicada à Informática Forense e à Cibersegurança.
