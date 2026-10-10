@@ -1,0 +1,1 @@
+Arquivo de exemplo ficticio para testar o laboratorio de analise forense.
